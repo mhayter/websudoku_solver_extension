@@ -1,12 +1,15 @@
 {
-  "name": "Solve Sudoku",
+  "name": "Solve Websudoku",
   "version": "1.1.1",
-  "description": "Solves websudoku.com puzzles",
+  "description": "Solves view.websudoku.com puzzles",
   "content_scripts": [{
       "matches": ["*://*.websudoku.com/*"],
       "js": ["sudoku_cheat.js"],
       "run_at": "document_start"
   }],
+  "background": {
+      "scripts": ["bl.js"]
+  },
   "browser_action": {
     "default_icon": "sudoku_icon_19.png"
   },

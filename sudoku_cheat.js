@@ -11,10 +11,6 @@ function solveSudoku() {
 
 	var inputs = document.getElementsByTagName("input");
 
-	console.log(answer);
-	console.log(mask);
-	console.log("inputs " + inputs[0]);
-
 	var answerPlace = 0;
 	var inputPlace = 0;
 	while (answerPlace < answer.length) {
@@ -28,7 +24,16 @@ function solveSudoku() {
 	}
 
 	var submits = document.getElementsByName("submit");
-	//ubmits[0].click();// how am I doing?
+	//submits[0].click();// how am I doing?
 }
-document.addEventListener('DOMContentLoaded', solveSudoku);
+chrome.runtime.onMessage.addListener(
+  function(request, sender, sendResponse) {
+    if( request.message === "clicked_browser_action" ) {
+    	solveSudoku();
+		//document.addEventListener('DOMContentLoaded', solveSudoku);
+	}
+});
+//chrome.browserAction.onClicked.addListener(solveSudoku);
+//document.addEventListener('DOMContentLoaded', solveSudoku);
 //solveSudoku();
+
